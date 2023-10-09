@@ -1,3 +1,4 @@
+import 'package:fast_app_base/screen/notification/d_notification.dart';
 import 'package:fast_app_base/screen/notification/notification_dummy.dart';
 import 'package:fast_app_base/screen/notification/w_notification_item.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,14 @@ class _NotificationScreenState extends State<NotificationScreen> {
               childCount: notificationDummies.length,
               (context, index) => NotificationItemWidget(
                 notification: notificationDummies[index],
+                onTap: () {
+                  NotificationDialog(
+                    notifications: [
+                      notificationDummies[0],
+                      notificationDummies[1],
+                    ],
+                  ).show();
+                },
               ),
             ),
           ),
