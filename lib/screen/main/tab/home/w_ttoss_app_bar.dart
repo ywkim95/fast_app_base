@@ -1,7 +1,9 @@
 import 'package:fast_app_base/common/common.dart';
+import 'package:fast_app_base/screen/notification/s_notification.dart';
 import 'package:flutter/material.dart';
 
 class TtossAppBar extends StatefulWidget {
+  static const double appBarHeight = 60;
   const TtossAppBar({super.key});
 
   @override
@@ -9,12 +11,12 @@ class TtossAppBar extends StatefulWidget {
 }
 
 class _TtossAppBarState extends State<TtossAppBar> {
-  bool _showRedDot = false;
+  final bool _showRedDot = false;
   @override
   Widget build(BuildContext context) {
     return Container(
       color: context.appColors.appBarBackground,
-      height: 60,
+      height: TtossAppBar.appBarHeight,
       child: Row(
         children: [
           width10,
@@ -30,9 +32,8 @@ class _TtossAppBarState extends State<TtossAppBar> {
           width10,
           Tap(
             onTap: () {
-              setState(() {
-                _showRedDot = !_showRedDot;
-              });
+              // 알림화면
+              Nav.push(const NotificationScreen());
             },
             child: Stack(
               children: [
