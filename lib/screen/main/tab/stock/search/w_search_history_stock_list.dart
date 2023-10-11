@@ -10,6 +10,9 @@ class SearchHistoryStockList extends StatefulWidget {
 class _SearchHistoryStockListState extends State<SearchHistoryStockList> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const SizedBox(
+      height: 60,
+      child: Placeholder(),
+    );
   }
 }
