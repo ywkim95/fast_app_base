@@ -10,5 +10,5 @@ class PopularStock extends SimpleStock with StockPercentageDataProvider {
     required String stockName,
     required this.yesterdayClosePrice,
     required this.currentPrice,
-  }) : super(stockName: stockName);
+  }) : super(name: stockName);
 }

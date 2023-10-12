@@ -1,15 +1,15 @@
 class SimpleStock {
-  final String stockName;
+  final String name;
   SimpleStock({
-    required this.stockName,
+    required this.name,
   });
 
   factory SimpleStock.fromJson(Map<String, dynamic> json) {
-    return SimpleStock(stockName: json['name']);
+    return SimpleStock(name: json['name']);
   }
 
   @override
   String toString() {
-    return stockName;
+    return name;
   }
 }
