@@ -12,7 +12,7 @@ class StockItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: context.appColors.buttonBackground,
+      color: context.appColors.roundedLayoutBackground,
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Row(
         children: [

@@ -1,3 +1,4 @@
+import 'package:fast_app_base/common/cli_common.dart';
 import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/screen/notification/s_notification.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +57,13 @@ class _TtossAppBarState extends State<TtossAppBar> {
                     ),
                   ),
               ],
-            ),
+            )
+                .animate(
+                    // onComplete: (controller) => controller.repeat(), -> 반복함수
+                    )
+                .shake(duration: 2100.ms, hz: 3)
+                .then()
+                .fadeOut(duration: 1000.ms),
           ),
           width10,
         ],

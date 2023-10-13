@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.fast_app_base">
+    package="com.ywkim.fast_campus">
 
     <application
         android:name="${applicationName}"
