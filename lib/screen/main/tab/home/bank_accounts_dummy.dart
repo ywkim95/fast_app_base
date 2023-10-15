@@ -1,3 +1,4 @@
+import 'package:fast_app_base/common/dart/extension/collection_extension.dart';
 import 'package:fast_app_base/screen/main/tab/home/banks_dummy.dart';
 import 'package:fast_app_base/screen/main/tab/home/vo/vo_bank_account.dart';
 
@@ -10,7 +11,69 @@ final bankAccountShinhan3 =
 final bankAccountToss = BankAccount(bank: bankTtoss, balance: 5000000);
 final bankAccountKakao =
     BankAccount(bank: bankKakao, balance: 7000000, accountTypeName: '입출금통장');
+final bankAccountKakao2 =
+    BankAccount(bank: bankKakao, balance: 10000000, accountTypeName: '특별통장');
 
+abstract class Animal {
+  void eat();
+}
+
+class Dog extends Animal {
+  @override
+  void eat() {}
+}
+
+class Cat extends Animal {
+  @override
+  void eat() {}
+}
+
+class Cow extends Animal {
+  @override
+  void eat() {}
+}
+
+void main() {
+  // 삽입
+  bankAccounts.insert(1, bankAccountKakao2);
+
+  // 위치이동
+  final temp = bankAccounts.removeAt(9);
+  bankAccounts.insert(0, temp);
+
+  //교환
+  bankAccounts.swap(0, 10);
+
+  //변환
+  final banks = bankAccounts.map((e) => e.bank).toList();
+  // final banks2 = bankAccounts
+  //     .mapIndexed((element, index) => Row(
+  //           children: [(index + 1).text.make()],
+  //         ))
+  //     .toList();
+  // for (final bank in banks) {
+  //   print(bank.toString());
+  // }
+
+  // final map = HashMap<String, BankAccount>();
+  // map['ttoss'] = bankAccountToss;
+  // map['kakao'] = bankAccountKakao;
+  // map.putIfAbsent('kakao', () => bankAccountKakao2);
+  // if(!map.containsKey('kakao')){
+  //   map['kakao'] = bankAccountKakao2;
+  // }
+
+  // final ttossAccount = map['ttoss'];
+
+  //
+  final uniqueBanks = banks.toSet();
+  for (final bank in uniqueBanks) {
+    print(bank.toString());
+  }
+  // for (final account in bankAccounts) {
+  //   print(account.toString());
+  // }
+}
 // main() {
 //   for (var item in bankAccounts) {
 //     print(item.accountTypeName);

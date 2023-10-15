@@ -17,13 +17,14 @@ class PopularStockItem extends StatelessWidget {
       children: [
         SizedBox(
           width: 40,
-          child: number.text.make(),
+          child: number.text.bold.white.size(16.0).make(),
         ),
-        width30,
-        popularStock.name.text.make(),
+        width20,
+        popularStock.name.text.bold.white.size(16.0).make(),
         emptyExpanded,
         popularStock.todayPercentageString.text
             .color(popularStock.getPriceColor(context))
+            .size(16.0)
             .make(),
       ],
     ).pSymmetric(v: 25);

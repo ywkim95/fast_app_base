@@ -10,4 +10,8 @@ class BankAccount {
     required this.balance,
     this.accountTypeName,
   });
+  @override
+  String toString() {
+    return 'BankAccount(bank: $bank, balace: $balance, accountTypeName: $accountTypeName)';
+  }
 }

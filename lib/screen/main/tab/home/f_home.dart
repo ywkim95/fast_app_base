@@ -6,6 +6,7 @@ import 'package:fast_app_base/screen/dialog/d_message.dart';
 import 'package:fast_app_base/screen/main/s_main.dart';
 import 'package:fast_app_base/screen/main/tab/home/bank_accounts_dummy.dart';
 import 'package:fast_app_base/screen/main/tab/home/w_bank_account.dart';
+import 'package:fast_app_base/screen/main/tab/home/w_rive_like_button.dart';
 import 'package:fast_app_base/screen/main/tab/home/w_ttoss_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:live_background/live_background.dart';
@@ -14,10 +15,17 @@ import 'package:live_background/widget/live_background_widget.dart';
 import '../../../dialog/d_color_bottom.dart';
 import '../../../dialog/d_confirm.dart';
 
-class HomeFragment extends StatelessWidget {
+class HomeFragment extends StatefulWidget {
   const HomeFragment({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<HomeFragment> createState() => _HomeFragmentState();
+}
+
+class _HomeFragmentState extends State<HomeFragment> {
+  bool isLike = false;
 
   @override
   Widget build(BuildContext context) {
@@ -36,38 +44,49 @@ class HomeFragment extends StatelessWidget {
               await sleepAsync(500.ms);
             },
             child: SingleChildScrollView(
-              padding: const EdgeInsets.only(
-                top: TtossAppBar.appBarHeight,
-                bottom: MainScreenState.bottomNavigatorHeight,
-              ),
-              child: Column(
-                children: [
-                  BigButton(
-                    text: '토스뱅크',
-                    onTap: () {
-                      context.showSnackbar('토스뱅크를 눌렀어요.');
-                    },
-                  ),
-                  height10,
-                  RoundedContainer(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        "자산".text.bold.white.make(),
-                        height5,
-                        ...bankAccounts
-                            .map((e) => BankAccountWidget(account: e))
-                            .toList(),
-                      ],
+                padding: const EdgeInsets.only(
+                  top: TtossAppBar.appBarHeight,
+                  bottom: MainScreenState.bottomNavigatorHeight,
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 250,
+                      width: 250,
+                      child: RiveLikeButton(
+                        isLike: isLike,
+                        onTapLike: (isLike) {
+                          setState(() {
+                            this.isLike = isLike;
+                          });
+                        },
+                      ),
                     ),
-                  ),
-                ],
-              )
-                  .pSymmetric(h: 20.0)
-                  .animate()
-                  .slideY(duration: 3000.ms)
-                  .fadeIn(),
-            ),
+                    BigButton(
+                      text: '토스뱅크',
+                      onTap: () {
+                        context.showSnackbar('토스뱅크를 눌렀어요.');
+                      },
+                    ),
+                    height10,
+                    RoundedContainer(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          "자산".text.bold.white.make(),
+                          height5,
+                          ...bankAccounts
+                              .map((e) => BankAccountWidget(account: e))
+                              .toList(),
+                        ],
+                      ),
+                    ),
+                  ],
+                ).pSymmetric(h: 20.0)
+                // .animate()
+                // .slideY(duration: 3000.ms)
+                // .fadeIn(),
+                ),
           ),
           const TtossAppBar(),
         ],
