@@ -40,20 +40,28 @@ void main() async {
 }
 
 abstract class DoWorkInterface {
-  FutureOr doWork();
+  FutureOr<String> doWork();
 }
 
 class SyncWork extends DoWorkInterface {
   @override
-  void doWork() {}
+  String doWork() {
+    return 'wow';
+  }
 }
 
 class AsyncWork extends DoWorkInterface {
   @override
-  FutureOr doWork() async {}
+  Future<String> doWork() async {
+    return '';
+  }
 }
 
 Future<List<BankAccount>> getBankAccount() async {
   await Future.delayed(const Duration(seconds: 2));
   return bankAccounts;
+}
+
+Future sleepAsync(Duration duration) {
+  return Future.delayed(duration, () => {});
 }

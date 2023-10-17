@@ -27,6 +27,12 @@ class HomeFragment extends StatefulWidget {
 
 class _HomeFragmentState extends State<HomeFragment> {
   bool isLike = false;
+  int count = 0;
+  late final stream = countStream(5).asBroadcastStream();
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +69,44 @@ class _HomeFragmentState extends State<HomeFragment> {
                         },
                       ),
                     ),
+                    StreamBuilder(
+                      stream: countStream(5),
+                      builder: (context, snapshot) {
+                        final count = snapshot.data;
+                        switch (snapshot.connectionState) {
+                          case ConnectionState.active:
+                            if (count == null) {
+                              return const CircularProgressIndicator();
+                            } else {
+                              return count.text.size(30).bold.white.make();
+                            }
+                          case ConnectionState.waiting:
+                          case ConnectionState.none:
+                            return const CircularProgressIndicator();
+                          case ConnectionState.done:
+                            return '완료'.text.size(30).bold.white.make();
+                        }
+                      },
+                    ),
+                    StreamBuilder(
+                      stream: stream,
+                      builder: (context, snapshot) {
+                        final count = snapshot.data;
+                        switch (snapshot.connectionState) {
+                          case ConnectionState.active:
+                            if (count == null) {
+                              return const CircularProgressIndicator();
+                            } else {
+                              return count.text.size(30).bold.white.make();
+                            }
+                          case ConnectionState.waiting:
+                          case ConnectionState.none:
+                            return const CircularProgressIndicator();
+                          case ConnectionState.done:
+                            return '완료'.text.size(30).bold.white.make();
+                        }
+                      },
+                    ),
                     BigButton(
                       text: '토스뱅크',
                       onTap: () async {
@@ -96,6 +140,14 @@ class _HomeFragmentState extends State<HomeFragment> {
         ],
       ),
     );
+  }
+
+  Stream<int> countStream(int max) async* {
+    await sleepAsync(2.seconds);
+    for (int i = 1; i <= max; i++) {
+      yield i;
+      await sleepAsync(const Duration(seconds: 1));
+    }
   }
 
   void showSnackbar(BuildContext context) {
