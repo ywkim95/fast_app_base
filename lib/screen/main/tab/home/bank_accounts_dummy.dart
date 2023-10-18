@@ -2,17 +2,17 @@ import 'package:fast_app_base/common/dart/extension/collection_extension.dart';
 import 'package:fast_app_base/screen/main/tab/home/banks_dummy.dart';
 import 'package:fast_app_base/screen/main/tab/home/vo/vo_bank_account.dart';
 
-final bankAccountShinhan1 = BankAccount(
+final bankAccountShinhan1 = BankAccount(1,
     bank: bankShinhan, balance: 3000000, accountTypeName: '신한 주거래 우대통장(저축예금)');
-final bankAccountShinhan2 =
-    BankAccount(bank: bankShinhan, balance: 30000000, accountTypeName: '저축예금');
-final bankAccountShinhan3 =
-    BankAccount(bank: bankShinhan, balance: 300000000, accountTypeName: '저축예금');
-final bankAccountToss = BankAccount(bank: bankTtoss, balance: 5000000);
+final bankAccountShinhan2 = BankAccount(2,
+    bank: bankShinhan, balance: 30000000, accountTypeName: '저축예금');
+final bankAccountShinhan3 = BankAccount(3,
+    bank: bankShinhan, balance: 300000000, accountTypeName: '저축예금');
+final bankAccountToss = BankAccount(4, bank: bankTtoss, balance: 5000000);
 final bankAccountKakao =
-    BankAccount(bank: bankKakao, balance: 7000000, accountTypeName: '입출금통장');
+    BankAccount(5, bank: bankKakao, balance: 7000000, accountTypeName: '입출금통장');
 final bankAccountKakao2 =
-    BankAccount(bank: bankKakao, balance: 10000000, accountTypeName: '특별통장');
+    BankAccount(6, bank: bankKakao, balance: 10000000, accountTypeName: '특별통장');
 
 abstract class Animal {
   void eat();
@@ -97,11 +97,6 @@ void main() {
 
 // List
 final bankAccounts = [
-  bankAccountShinhan1,
-  bankAccountShinhan1,
-  bankAccountShinhan1,
-  bankAccountShinhan1,
-  bankAccountShinhan1,
   bankAccountShinhan1,
   bankAccountShinhan2,
   bankAccountShinhan3,

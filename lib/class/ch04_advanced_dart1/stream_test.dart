@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:fast_app_base/screen/future_test.dart';
-
 void main() {
   /// Stream 기본 개념
   /// Future - 1번의 데이터를 가져옴
@@ -70,4 +68,8 @@ Stream<int> countStream(int max) async* {
 
     await sleepAsync(const Duration(seconds: 1));
   }
+}
+
+Future sleepAsync(Duration duration) {
+  return Future.delayed(duration, () => {});
 }
